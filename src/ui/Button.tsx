@@ -4,9 +4,10 @@ import { typeStyledButton } from '../Style/Style'
 
 export interface IButton extends React.HTMLAttributes<HTMLButtonElement>{
 	type?:	'primary' | 'secondary' | 'success' | 'info' | 'warning' | 'danger' | 'contrast' | 'disabled'
+	onClick?: () => void
 }
 
-export const Button = ({type="primary",className,children}:IButton) => {
+export const Button = ({type="primary",className,children,onClick}:IButton) => {
 
 	const styleButton = classNames(
 		className,
@@ -15,7 +16,7 @@ export const Button = ({type="primary",className,children}:IButton) => {
 	)
 
 	return (
-			<button className={styleButton}>
+			<button onClick={onClick} className={styleButton}>
 				{children}
 			</button>
 	)

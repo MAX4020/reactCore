@@ -1,6 +1,27 @@
 import { BiMinusCircle } from "react-icons/bi"
 import { BsPlusCircle } from "react-icons/bs"
 
+export const typeStyledLabel:any = {
+	primary: "bg-stone-200 focus:bg-stone-400 hover:bg-stone-300 dark:bg-stone-700 dark:text-stone-100 dark:hover:bg-stone-700 dark:focus:bg-stone-600",
+	secondary: "bg-blue-200 focus:bg-blue-400 hover:bg-blue-300 text-black dark:bg-blue-700 dark:hover:bg-blue-700 dark:text-white dark:focus:bg-blue-600",
+	success: "bg-green-200 focus:bg-green-400 text-black hover:bg-green-300 dark:bg-green-700 dark:hover:bg-green-700 dark:text-white dark:focus:bg-green-600",
+	info: "bg-sky-200 focus:bg-sky-400 hover:bg-sky-300 text-black dark:bg-sky-700 dark:hover:bg-sky-700 dark:text-white dark:focus:bg-sky-600",
+	warning: "bg-amber-200 focus:bg-amber-400 hover:bg-amber-300 text-black dark:bg-amber-700 dark:hover:bg-amber-700 dark:text-white dark:focus:bg-amber-600",
+	danger: "bg-red-200 focus:bg-red-400 text-black hover:bg-red-300 dark:bg-red-700 dark:hover:bg-red-700 dark:text-white dark:focus:bg-red-600",
+	contrast: "bg-stone-900 focus:bg-stone-700 hover:bg-stone-600 text-white dark:bg-stone-100 dark:hover:bg-stone-300 dark:text-black dark:focus:bg-stone-400",
+	disabled: "bg-stone-200 focus:bg-stone-100 hover:bg-stone-300 dark:bg-stone-700 dark:text-stone-100 dark:hover:bg-stone-700 dark:focus:bg-stone-600 pointer-events-none cursor-no-drop"
+}
+
+export const typeStyledDropzone:any = {
+	primary: "bg-stone-200 dark:bg-stone-700 dark:text-white",
+	secondary: "bg-blue-200 dark:bg-blue-700 dark:text-white",
+	success: "bg-green-200 dark:bg-green-700 dark:text-white",
+	info: "bg-sky-200 dark:bg-sky-700 dark:text-white",
+	warning: "bg-amber-200 dark:bg-amber-700 dark:text-white",
+	danger: "bg-red-200 dark:bg-red-700 dark:text-white",
+	contrast: "bg-stone-900 text-white dark:bg-stone-100 dark:text-black",
+	disabled: "bg-stone-200 dark:bg-stone-700 dark:text-white",
+}
 
 export const typeStyledInput:any = {
 	primary: "bg-stone-200 focus:bg-stone-400 hover:bg-stone-300 dark:bg-stone-700 dark:text-stone-100 dark:hover:bg-stone-700 dark:focus:bg-stone-600",

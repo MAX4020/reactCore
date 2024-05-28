@@ -39,90 +39,90 @@ export const SelectDefaul:Story={
     ]
   }
 }
-export const SelectItemsCollorfull:Story={
-  render: () => {
-  return(
-    <>
-      <div className='p-8 flex justify-around'>
-        <Select name={"vs"} value={1} setValue={()=>{}} options={itemsOptions} type={'primary'}></Select>
-        <Select name={"vs"} value={1} setValue={()=>{}} options={itemsOptions} type={'secondary'}></Select>
-        <Select name={"vs"} value={1} setValue={()=>{}} options={itemsOptions} type={'success'}></Select>
-        <Select name={"vs"} value={1} setValue={()=>{}} options={itemsOptions} type={'info'}></Select>
-        <Select name={"vs"} value={1} setValue={()=>{}} options={itemsOptions} type={'warning'}></Select>
-        <Select name={"vs"} value={1} setValue={()=>{}} options={itemsOptions} type={'danger'}></Select>
-        <Select name={"vs"} value={1} setValue={()=>{}} options={itemsOptions} type={'contrast'}></Select>
-        <Select name={"vs"} value={1} setValue={()=>{}} options={itemsOptions} type={'disabled'}></Select>
-      </div>
-      <div className='p-8 dark bg-stone-900 flex justify-around'>
-        <Select name={"vs"} value={1} setValue={()=>{}} options={itemsOptions} type={'primary'}></Select>
-        <Select name={"vs"} value={1} setValue={()=>{}} options={itemsOptions} type={'secondary'}></Select>
-        <Select name={"vs"} value={1} setValue={()=>{}} options={itemsOptions} type={'success'}></Select>
-        <Select name={"vs"} value={1} setValue={()=>{}} options={itemsOptions} type={'info'}></Select>
-        <Select name={"vs"} value={1} setValue={()=>{}} options={itemsOptions} type={'warning'}></Select>
-        <Select name={"vs"} value={1} setValue={()=>{}} options={itemsOptions} type={'danger'}></Select>
-        <Select name={"vs"} value={1} setValue={()=>{}} options={itemsOptions} type={'contrast'}></Select>
-        <Select name={"vs"} value={1} setValue={()=>{}} options={itemsOptions} type={'disabled'}></Select>
-      </div>
-    </>
-    )
-  }
-}
-export const SelectIconsCollorfull:Story={
-  render: () => {
-  return(
-    <>
-      <div className='p-8 flex justify-around'>
-        <Select name={"vs"} value={1} setValue={()=>{}} options={iconsOptions} type={'primary'}></Select>
-        <Select name={"vs"} value={1} setValue={()=>{}} options={iconsOptions} type={'secondary'}></Select>
-        <Select name={"vs"} value={1} setValue={()=>{}} options={iconsOptions} type={'success'}></Select>
-        <Select name={"vs"} value={1} setValue={()=>{}} options={iconsOptions} type={'info'}></Select>
-        <Select name={"vs"} value={1} setValue={()=>{}} options={iconsOptions} type={'warning'}></Select>
-        <Select name={"vs"} value={1} setValue={()=>{}} options={iconsOptions} type={'danger'}></Select>
-        <Select name={"vs"} value={1} setValue={()=>{}} options={iconsOptions} type={'contrast'}></Select>
-        <Select name={"vs"} value={1} setValue={()=>{}} options={iconsOptions} type={'disabled'}></Select>
-      </div>
-      <div className='p-8 dark bg-stone-900 flex justify-around'>
-        <Select name={"vs"} value={1} setValue={()=>{}} options={iconsOptions} type={'primary'}></Select>
-        <Select name={"vs"} value={1} setValue={()=>{}} options={iconsOptions} type={'secondary'}></Select>
-        <Select name={"vs"} value={1} setValue={()=>{}} options={iconsOptions} type={'success'}></Select>
-        <Select name={"vs"} value={1} setValue={()=>{}} options={iconsOptions} type={'info'}></Select>
-        <Select name={"vs"} value={1} setValue={()=>{}} options={iconsOptions} type={'warning'}></Select>
-        <Select name={"vs"} value={1} setValue={()=>{}} options={iconsOptions} type={'danger'}></Select>
-        <Select name={"vs"} value={1} setValue={()=>{}} options={iconsOptions} type={'contrast'}></Select>
-        <Select name={"vs"} value={1} setValue={()=>{}} options={iconsOptions} type={'disabled'}></Select>
-      </div>
-    </>
-    )
-  }
-}
-export const SelectImagesCollorfull:Story={
-  render: () => {
-  return(
-    <>
-      <div className='p-8 flex justify-around'>
-        <Select name={"vs"} value={1} setValue={()=>{}} options={imagesOptions} type={'primary'}></Select>
-        <Select name={"vs"} value={1} setValue={()=>{}} options={imagesOptions} type={'secondary'}></Select>
-        <Select name={"vs"} value={1} setValue={()=>{}} options={imagesOptions} type={'success'}></Select>
-        <Select name={"vs"} value={1} setValue={()=>{}} options={imagesOptions} type={'info'}></Select>
-        <Select name={"vs"} value={1} setValue={()=>{}} options={imagesOptions} type={'warning'}></Select>
-        <Select name={"vs"} value={1} setValue={()=>{}} options={imagesOptions} type={'danger'}></Select>
-        <Select name={"vs"} value={1} setValue={()=>{}} options={imagesOptions} type={'contrast'}></Select>
-        <Select name={"vs"} value={1} setValue={()=>{}} options={imagesOptions} type={'disabled'}></Select>
-      </div>
-      <div className='p-8 dark bg-stone-900 flex justify-around'>
-        <Select name={"vs"} value={1} setValue={()=>{}} options={imagesOptions} type={'primary'}></Select>
-        <Select name={"vs"} value={1} setValue={()=>{}} options={imagesOptions} type={'secondary'}></Select>
-        <Select name={"vs"} value={1} setValue={()=>{}} options={imagesOptions} type={'success'}></Select>
-        <Select name={"vs"} value={1} setValue={()=>{}} options={imagesOptions} type={'info'}></Select>
-        <Select name={"vs"} value={1} setValue={()=>{}} options={imagesOptions} type={'warning'}></Select>
-        <Select name={"vs"} value={1} setValue={()=>{}} options={imagesOptions} type={'danger'}></Select>
-        <Select name={"vs"} value={1} setValue={()=>{}} options={imagesOptions} type={'contrast'}></Select>
-        <Select name={"vs"} value={1} setValue={()=>{}} options={imagesOptions} type={'disabled'}></Select>
-      </div>
-    </>
-    )
-  }
-}
+// export const SelectItemsCollorfull:Story={
+//   render: () => {
+//   return(
+//     <>
+//       <div className='p-8 flex justify-around'>
+//         <Select name={"vs"} value={1} setValue={()=>{}} options={itemsOptions} type={'primary'}></Select>
+//         <Select name={"vs"} value={1} setValue={()=>{}} options={itemsOptions} type={'secondary'}></Select>
+//         <Select name={"vs"} value={1} setValue={()=>{}} options={itemsOptions} type={'success'}></Select>
+//         <Select name={"vs"} value={1} setValue={()=>{}} options={itemsOptions} type={'info'}></Select>
+//         <Select name={"vs"} value={1} setValue={()=>{}} options={itemsOptions} type={'warning'}></Select>
+//         <Select name={"vs"} value={1} setValue={()=>{}} options={itemsOptions} type={'danger'}></Select>
+//         <Select name={"vs"} value={1} setValue={()=>{}} options={itemsOptions} type={'contrast'}></Select>
+//         <Select name={"vs"} value={1} setValue={()=>{}} options={itemsOptions} type={'disabled'}></Select>
+//       </div>
+//       <div className='p-8 dark bg-stone-900 flex justify-around'>
+//         <Select name={"vs"} value={1} setValue={()=>{}} options={itemsOptions} type={'primary'}></Select>
+//         <Select name={"vs"} value={1} setValue={()=>{}} options={itemsOptions} type={'secondary'}></Select>
+//         <Select name={"vs"} value={1} setValue={()=>{}} options={itemsOptions} type={'success'}></Select>
+//         <Select name={"vs"} value={1} setValue={()=>{}} options={itemsOptions} type={'info'}></Select>
+//         <Select name={"vs"} value={1} setValue={()=>{}} options={itemsOptions} type={'warning'}></Select>
+//         <Select name={"vs"} value={1} setValue={()=>{}} options={itemsOptions} type={'danger'}></Select>
+//         <Select name={"vs"} value={1} setValue={()=>{}} options={itemsOptions} type={'contrast'}></Select>
+//         <Select name={"vs"} value={1} setValue={()=>{}} options={itemsOptions} type={'disabled'}></Select>
+//       </div>
+//     </>
+//     )
+//   }
+// }
+// export const SelectIconsCollorfull:Story={
+//   render: () => {
+//   return(
+//     <>
+//       <div className='p-8 flex justify-around'>
+//         <Select name={"vs"} value={1} setValue={()=>{}} options={iconsOptions} type={'primary'}></Select>
+//         <Select name={"vs"} value={1} setValue={()=>{}} options={iconsOptions} type={'secondary'}></Select>
+//         <Select name={"vs"} value={1} setValue={()=>{}} options={iconsOptions} type={'success'}></Select>
+//         <Select name={"vs"} value={1} setValue={()=>{}} options={iconsOptions} type={'info'}></Select>
+//         <Select name={"vs"} value={1} setValue={()=>{}} options={iconsOptions} type={'warning'}></Select>
+//         <Select name={"vs"} value={1} setValue={()=>{}} options={iconsOptions} type={'danger'}></Select>
+//         <Select name={"vs"} value={1} setValue={()=>{}} options={iconsOptions} type={'contrast'}></Select>
+//         <Select name={"vs"} value={1} setValue={()=>{}} options={iconsOptions} type={'disabled'}></Select>
+//       </div>
+//       <div className='p-8 dark bg-stone-900 flex justify-around'>
+//         <Select name={"vs"} value={1} setValue={()=>{}} options={iconsOptions} type={'primary'}></Select>
+//         <Select name={"vs"} value={1} setValue={()=>{}} options={iconsOptions} type={'secondary'}></Select>
+//         <Select name={"vs"} value={1} setValue={()=>{}} options={iconsOptions} type={'success'}></Select>
+//         <Select name={"vs"} value={1} setValue={()=>{}} options={iconsOptions} type={'info'}></Select>
+//         <Select name={"vs"} value={1} setValue={()=>{}} options={iconsOptions} type={'warning'}></Select>
+//         <Select name={"vs"} value={1} setValue={()=>{}} options={iconsOptions} type={'danger'}></Select>
+//         <Select name={"vs"} value={1} setValue={()=>{}} options={iconsOptions} type={'contrast'}></Select>
+//         <Select name={"vs"} value={1} setValue={()=>{}} options={iconsOptions} type={'disabled'}></Select>
+//       </div>
+//     </>
+//     )
+//   }
+// }
+// export const SelectImagesCollorfull:Story={
+//   render: () => {
+//   return(
+//     <>
+//       <div className='p-8 flex justify-around'>
+//         <Select name={"vs"} value={1} setValue={()=>{}} options={imagesOptions} type={'primary'}></Select>
+//         <Select name={"vs"} value={1} setValue={()=>{}} options={imagesOptions} type={'secondary'}></Select>
+//         <Select name={"vs"} value={1} setValue={()=>{}} options={imagesOptions} type={'success'}></Select>
+//         <Select name={"vs"} value={1} setValue={()=>{}} options={imagesOptions} type={'info'}></Select>
+//         <Select name={"vs"} value={1} setValue={()=>{}} options={imagesOptions} type={'warning'}></Select>
+//         <Select name={"vs"} value={1} setValue={()=>{}} options={imagesOptions} type={'danger'}></Select>
+//         <Select name={"vs"} value={1} setValue={()=>{}} options={imagesOptions} type={'contrast'}></Select>
+//         <Select name={"vs"} value={1} setValue={()=>{}} options={imagesOptions} type={'disabled'}></Select>
+//       </div>
+//       <div className='p-8 dark bg-stone-900 flex justify-around'>
+//         <Select name={"vs"} value={1} setValue={()=>{}} options={imagesOptions} type={'primary'}></Select>
+//         <Select name={"vs"} value={1} setValue={()=>{}} options={imagesOptions} type={'secondary'}></Select>
+//         <Select name={"vs"} value={1} setValue={()=>{}} options={imagesOptions} type={'success'}></Select>
+//         <Select name={"vs"} value={1} setValue={()=>{}} options={imagesOptions} type={'info'}></Select>
+//         <Select name={"vs"} value={1} setValue={()=>{}} options={imagesOptions} type={'warning'}></Select>
+//         <Select name={"vs"} value={1} setValue={()=>{}} options={imagesOptions} type={'danger'}></Select>
+//         <Select name={"vs"} value={1} setValue={()=>{}} options={imagesOptions} type={'contrast'}></Select>
+//         <Select name={"vs"} value={1} setValue={()=>{}} options={imagesOptions} type={'disabled'}></Select>
+//       </div>
+//     </>
+//     )
+//   }
+// }
 export const ReadmeSelect:Story={
   render:()=>{
     return(

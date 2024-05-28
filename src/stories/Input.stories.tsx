@@ -55,24 +55,24 @@ export const InputColorfull:Story={
       return (
       <> 
         <div className='p-8 flex justify-around'>
-          <InputNumber name="vs" type={"primary"} onChange={()=>{}}/>
-          <InputNumber name="vs" type={"secondary"} onChange={()=>{}}/>
-          <InputNumber name="vs" type={"success"} onChange={()=>{}}/>
-          <InputNumber name="vs" type={"info"} onChange={()=>{}}/>
-          <InputNumber name="vs" type={"warning"} onChange={()=>{}}/>
-          <InputNumber name="vs" type={"danger"} onChange={()=>{}}/>
-          <InputNumber name="vs" type={"contrast"} onChange={()=>{}}/>
-          <InputNumber name="vs" type={"disabled"} onChange={()=>{}}/>
+          <InputNumber name="vs" type={"primary"} onChange={()=>{}} content = "123123"/>
+          <InputNumber name="vs" type={"secondary"} onChange={()=>{}} content = "123123"/>
+          <InputNumber name="vs" type={"success"} onChange={()=>{}} content = "123123"/>
+          <InputNumber name="vs" type={"info"} onChange={()=>{}} content = "123123"/>
+          <InputNumber name="vs" type={"warning"} onChange={()=>{}} content = "123123"/>
+          <InputNumber name="vs" type={"danger"} onChange={()=>{}} content = "123123"/>
+          <InputNumber name="vs" type={"contrast"} onChange={()=>{}} content = "123123"/>
+          <InputNumber name="vs" type={"disabled"} onChange={()=>{}} content = "123123"/>
         </div>
         <div className='p-8 dark bg-stone-900 flex justify-around'>
-          <InputNumber name="vs" type={"primary"} onChange={()=>{}}/>
-          <InputNumber name="vs" type={"secondary"} onChange={()=>{}}/>
-          <InputNumber name="vs" type={"success"} onChange={()=>{}}/>
-          <InputNumber name="vs" type={"info"} onChange={()=>{}}/>
-          <InputNumber name="vs" type={"warning"} onChange={()=>{}}/>
-          <InputNumber name="vs" type={"danger"} onChange={()=>{}}/>
-          <InputNumber name="vs" type={"contrast"} onChange={()=>{}}/>
-          <InputNumber name="vs" type={"disabled"} onChange={()=>{}}/>
+          <InputNumber name="vs" type={"primary"} onChange={()=>{}} content = "123123"/>
+          <InputNumber name="vs" type={"secondary"} onChange={()=>{}} content = "123123"/>
+          <InputNumber name="vs" type={"success"} onChange={()=>{}} content = "123123"/>
+          <InputNumber name="vs" type={"info"} onChange={()=>{}} content = "123123"/>
+          <InputNumber name="vs" type={"warning"} onChange={()=>{}} content = "123123"/>
+          <InputNumber name="vs" type={"danger"} onChange={()=>{}} content = "123123"/>
+          <InputNumber name="vs" type={"contrast"} onChange={()=>{}} content = "123123"/>
+          <InputNumber name="vs" type={"disabled"} onChange={()=>{}} content = "123123"/>
         </div>
       </>
     )}
