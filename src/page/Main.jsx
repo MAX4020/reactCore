@@ -12,10 +12,10 @@ import {
   Tooltip,
   Legend,
 } from 'chart.js';
-import { ckmeans } from "simple-statistics";
 import { Button } from "../ui/Button";
 import { Select } from "../ui/Select";
-import { Line } from "react-chartjs-2";
+import { Bar, Line, Scatter } from "react-chartjs-2";
+import { linearRegression } from "simple-statistics";
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -35,27 +35,53 @@ const Main = () => {
   const [lastUploadFileIndex, setLastUploadedFileIndex] = useState(null);
   const [currentChunkIndex, setCurrentChunkIndex] = useState(null);
   const [value,setValue] = useState(1)
+  const [statData1, setStatData1] = useState([])
+  const [statData2, setStatData2] = useState([])
+  const [statDataRegression, setStatDataRegression] = useState({})
   const fileRef = useRef()
   const fileRefUpload = useRef()
   const itemsOptions = [
     {value:1,title:<><p>Линейный</p></>},
-    {value:2,title:<><p>Гистограмма</p></>},
+    {value:2,title:<><p>Точечный</p></>},
     {value:3,title:<><p>Диаграмма</p></>}
   ]
+  const regression = linearRegression([statDataRegression])
+  const lengthGraph = statData1.map((item,index) => (index + 1))
   const options = {
     responsive: true,
   };
-  const labels = [1,2,3,4,5,6,7,8,9,10]
+  const labels = [...lengthGraph]
   const data = {
     labels,
     datasets: [
       {
-        label: 'Dataset 1',
-        data: [1,4,2,56,6,2,2],
+        label: 'y1',
+        data: [...statData1],
         borderColor: 'rgb(255, 99, 132)',
         backgroundColor: 'rgba(255, 99, 132, 0.5)',
       },
+      {
+        label: 'y2',
+        data: [...statData2],
+        borderColor: 'rgb(89, 99, 100)',
+        backgroundColor: 'rgba(89, 99, 100, 0.5)',
+      },
     ],
+  }
+  const dataScatter = {
+    labels,
+    datasets: [
+      {
+        label: 'dot',
+        data: [...statData1],
+        backgroundColor: 'rgba(255,99,132,1)', 
+      },
+      {
+        label: 'dot',
+        data: [...statData2],
+        backgroundColor: 'rgba(89,99,100,1)', 
+      },
+    ]
   }
 
   function handleDrop(e) {
@@ -127,8 +153,11 @@ const Main = () => {
 
         /* Convert array to json*/
         const dataParse = XLSX.utils.sheet_to_json(ws, {header:1});
+        setStatData1([...dataParse[0]])
+        setStatData2([...dataParse[1]])
+        setStatDataRegression([...dataParse])
         console.log(dataParse)
-        console.log(ckmeans(dataParse[0],2))
+        console.log(regression)
     };
     reader1.readAsBinaryString(f)
 }
@@ -254,13 +283,21 @@ const Main = () => {
             setValue={setValue}
             options={itemsOptions} 
             type={'primary'}/>
-            <div className="w-[1000px] h-[500px]">
+            {statData1.length != 0 &&<div className="w-[1000px] h-[500px]">
               {value == 1 && <Line
               type="Line"
               data={data}
               options={options}
               />}
-              </div>
+              {value == 2 && <Scatter
+              data={dataScatter}
+              options={options}
+              />
+              }
+            </div>}
+            <div className="statistic__regression">
+              <h2 className="head">Линейная регрессия</h2>
+            </div>
             </div>
           </div>
         </div>
