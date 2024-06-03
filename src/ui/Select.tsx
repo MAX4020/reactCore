@@ -38,7 +38,7 @@ export const Select = ({name,className,options, type = "primary", align = 'start
   )
 
   return ( 
-  <div className="relative w-full" ref={opt}>
+  <div className="relative" ref={opt}>
       <Input className="hidden" name={name}/>
       <Title className={styleSelect} onClick={!show?showOptions:hideOptions}>{options.find(item=>item.value===value)?.title??"-"}</Title>
       {show && 
@@ -52,7 +52,7 @@ export const Select = ({name,className,options, type = "primary", align = 'start
 const Title = ({className,children,onClick,...props}:React.HTMLAttributes<HTMLElement>) => {
   return(
     <>
-    <div className={classNames("flex items-center border-stone-400 border-2 p-2 rounded-t-md shadow-[inset_0_0_10px_2px_rgba(0,0,0,0.1)] cursor-pointer " + className)} onClick={onClick}>{children}</div>
+    <div className={classNames("flex items-center w-[500px] border-stone-400 border-2 p-2 rounded-t-md shadow-[inset_0_0_10px_2px_rgba(0,0,0,0.1)] cursor-pointer " + className)} onClick={onClick}>{children}</div>
     </>
   )
 }

@@ -15,7 +15,8 @@ import {
 import { Button } from "../ui/Button";
 import { Select } from "../ui/Select";
 import { Bar, Line, Scatter } from "react-chartjs-2";
-import { linearRegression } from "simple-statistics";
+import { chunk, ckmeans, combinations, extent, interquartileRange, linearRegression, linearRegressionLine, max, mean, median, medianAbsoluteDeviation, min, mode, product, quantile, rSquared, sampleCorrelation, sampleCovariance, sampleSkewness, sampleVariance, standardDeviation, sum, tTest, tTestTwoSample, variance } from "simple-statistics";
+import Counter from "../ui/Counter";
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -35,34 +36,100 @@ const Main = () => {
   const [lastUploadFileIndex, setLastUploadedFileIndex] = useState(null);
   const [currentChunkIndex, setCurrentChunkIndex] = useState(null);
   const [value,setValue] = useState(1)
-  const [statData1, setStatData1] = useState([])
-  const [statData2, setStatData2] = useState([])
-  const [statDataRegression, setStatDataRegression] = useState({})
+  const [typeRes,setTypeRes] = useState(1)
+  const [col, setCol] = useState(0)
+  const [rMin, setRMin] = useState()
+  const [rMax, setRMax] = useState()
+  const [rSum, setRSum] = useState()
+  const [rQuantile, setRQuantile] = useState()
+  const [rProduct, setRProduct] = useState()
+  const [rMean, setRMean] = useState()
+  const [rMode, setRMode] = useState()
+  const [rMedian, setRMedian] = useState()
+  const [rSkwen, setRSkwen] = useState()
+  const [rVariance, setRVariance] = useState()
+  const [rSVariance, setRSVariance] = useState()
+  const [rStd, setRStd] = useState()
+  const [rMad, setRMad] = useState()
+  const [rQuantileR, setRQuantileR] = useState()
+  const [rCovariance, setRCovariance] = useState()
+  const [rRquad, setRRquad] = useState()
+  const [rRegression, setRRegression] = useState()
+  const [rTest, setRTest] = useState()
+  const [rTestTwo, setRTestTwo] = useState()
+  const [rBernouli, setRBernouli] = useState()
+  const [rKmeans, setRKmeans] = useState()
+  const [rChunk, setRChunk] = useState()
+  const [rCombin, setRCombin] = useState()
+  const [rCorel, setRCorel] = useState()
+  const [rEcsces, setREcsces] = useState([])
+  const [dataParse,setDataParse] = useState([])
+
+  const [combin, setCombin] = useState(1)
+  const [expectedValue, setExpectedValue] = useState(1)
+  const [kmeansCol, setKmeansCol] = useState(1)
+  const [quantileVal, setQuantileVal] = useState(0.1)
+
   const fileRef = useRef()
   const fileRefUpload = useRef()
+  const regression = dataParse?.[0]?.map((item,index) => ([dataParse[0][index],dataParse[1][index]]))
+
+  const sMin = () =>        {setRMin(min(dataParse[col]))}
+  const sMax = () =>        {setRMax(max(dataParse[col]))}
+  const sSum = () =>        {setRSum(sum(dataParse[col]))}  
+  const sQuantile = () =>   {setRQuantile(quantile(dataParse[col],quantileVal))}
+  const sProduct = () =>    {setRProduct(product(dataParse[col]))}
+  const sMean = () =>       {setRMean(mean(dataParse[col]))}
+  const sMode = () =>       {setRMode(mode(dataParse[col]))}
+  const sMedian = () =>     {setRMedian(median(dataParse[col]))}
+  const sSkwen = () =>      {setRSkwen(sampleSkewness(dataParse[col]))}
+  const sVariance = () =>   {setRVariance(variance(dataParse[col]))}
+  const sSVariance = () =>  {setRSVariance(sampleVariance(dataParse[col]))}
+  const sStd = () =>        {setRStd(standardDeviation(dataParse[col]))}
+  const sMad = () =>        {setRMad(medianAbsoluteDeviation(dataParse[col]))}
+  const sQuantileR = () =>  {setRQuantileR(interquartileRange(dataParse[col]))}
+  const sCovariance = () => {setRCovariance(sampleCovariance(dataParse[0],dataParse[1]))}
+  const sRquad = () =>      {setRRquad(rSquared(regression,linearRegressionLine(linearRegression(regression))))}
+  const sRegression = () => {setRRegression(linearRegression(regression))}
+  const sTest = () =>       {setRTest(tTest(dataParse[col],expectedValue))}
+  const sTestTwo = () =>    {setRTestTwo(tTestTwoSample(dataParse[0],dataParse[1],0))}
+  const sKmeans = () =>     {setRKmeans(ckmeans(dataParse[col], kmeansCol))}
+  const sChunk = () =>      {setRChunk(chunk(dataParse[col],combin))}
+  const sCombin = () =>     {setRCombin(combinations(dataParse[col],combin))}
+  const sCorel = () =>      {setRCorel(sampleCorrelation(dataParse[0],dataParse[1]))}
+  const sEcsces = () =>     {setREcsces(extent(dataParse[col]))}
+
+  const typeResOptions = [
+    {value:1,title:<>статистика</>},
+    {value:2,title:<>тенденции</>},
+    {value:3,title:<>диспресия</>},
+    {value:4,title:<>сходство</>},
+    {value:5,title:<>регрессия</>},
+    {value:6,title:<>к-среднее</>},
+    {value:7,title:<>распределения</>},
+    {value:8,title:<>дополнительно</>},
+  ]
   const itemsOptions = [
     {value:1,title:<><p>Линейный</p></>},
     {value:2,title:<><p>Точечный</p></>},
-    {value:3,title:<><p>Диаграмма</p></>}
   ]
-  const regression = linearRegression([statDataRegression])
-  const lengthGraph = statData1.map((item,index) => (index + 1))
+  const lengthGraph = dataParse?.[0]?.map((item,index) => (index + 1))
   const options = {
     responsive: true,
   };
-  const labels = [...lengthGraph]
+  const labels = lengthGraph
   const data = {
     labels,
     datasets: [
       {
         label: 'y1',
-        data: [...statData1],
+        data: dataParse[0],
         borderColor: 'rgb(255, 99, 132)',
         backgroundColor: 'rgba(255, 99, 132, 0.5)',
       },
       {
         label: 'y2',
-        data: [...statData2],
+        data: dataParse[1],
         borderColor: 'rgb(89, 99, 100)',
         backgroundColor: 'rgba(89, 99, 100, 0.5)',
       },
@@ -73,12 +140,12 @@ const Main = () => {
     datasets: [
       {
         label: 'dot',
-        data: [...statData1],
+        data: dataParse[0],
         backgroundColor: 'rgba(255,99,132,1)', 
       },
       {
         label: 'dot',
-        data: [...statData2],
+        data: dataParse[1],
         backgroundColor: 'rgba(89,99,100,1)', 
       },
     ]
@@ -152,12 +219,7 @@ const Main = () => {
         const ws = readedData.Sheets[wsname];
 
         /* Convert array to json*/
-        const dataParse = XLSX.utils.sheet_to_json(ws, {header:1});
-        setStatData1([...dataParse[0]])
-        setStatData2([...dataParse[1]])
-        setStatDataRegression([...dataParse])
-        console.log(dataParse)
-        console.log(regression)
+        setDataParse(XLSX.utils.sheet_to_json(ws, {header:1}))
     };
     reader1.readAsBinaryString(f)
 }
@@ -275,7 +337,7 @@ const Main = () => {
             onChange={handleChange} 
             style={{display:'none'}}
             />
-            <div className = "mt-[20px]">
+            <div className = "mt-[20px] flex flex-col justify-center items-center">
             <h2 className="head">Выберите тип графика</h2>
             <Select 
             name={"vs"} 
@@ -283,7 +345,7 @@ const Main = () => {
             setValue={setValue}
             options={itemsOptions} 
             type={'primary'}/>
-            {statData1.length != 0 &&<div className="w-[1000px] h-[500px]">
+            {dataParse.length != 0 &&<div className="w-[1000px] h-[500px]">
               {value == 1 && <Line
               type="Line"
               data={data}
@@ -295,8 +357,169 @@ const Main = () => {
               />
               }
             </div>}
-            <div className="statistic__regression">
-              <h2 className="head">Линейная регрессия</h2>
+            <div className="statistic">
+              <h2 className="head">Блок статистики</h2>
+              <div className="statistic__result">
+                <Select
+                value={typeRes}
+                setValue={setTypeRes}
+                options={typeResOptions}
+                />
+              <h2 className="text-xl text-center text-white">По какой переменной</h2>
+                <Select
+                value={col}
+                setValue={setCol}
+                options={[
+                  {value:0,title:<>1</>},
+                  {value:1,title:<>2</>}
+              ]}
+                />
+                <div className="container__stat">
+                  {typeRes == 1 && dataParse !=0 && 
+                  <>
+                  <h1 className="head">Основная статистика</h1> 
+                  <h1 className="text-xl text-center mb-[20px] text-white">p для квантиля</h1>
+                  <Counter className="mb-[20px] text-white" value={quantileVal} setValue={setQuantileVal} step={0.01} min={0} max={1}/>
+                      <Button onClick={sMin} className="container__result">
+                        <h1 className="head__2">Минимальное</h1>
+                        <h1 className="text-xl text-center text-white">{ rMin }</h1>
+                      </Button>
+                      <Button onClick={sMax} className="container__result">
+                        <h1 className="head__2">Максимальное</h1>
+                        <h1 className="text-xl text-center text-white">{rMax}</h1>
+                      </Button>
+                      <Button onClick={sSum} className="container__result">
+                      <h1 className="head__2">Сумма</h1>
+                      <h1 className="text-xl text-center text-white">{rSum}</h1>
+                      </Button>
+                     
+                      <Button onClick={sQuantile} className="container__result">
+                      <h1 className="head__2">Квантиль</h1>
+                      <h1 className="text-xl text-center text-white">{rQuantile}</h1>
+                      </Button>
+                      <Button onClick={sProduct} className="container__result">
+                      <h1 className="head__2">Умножение</h1>
+                      <h1 className="text-xl text-center text-white">{rProduct}</h1>
+                      </Button>
+                  </>
+                  }
+                  {typeRes == 2 && 
+                  <>
+                  <h1 className="head">Тенденции</h1>
+                  <Button onClick={sMean} className="container__result">
+                        <h1 className="head__2">Среднее</h1>
+                        <h1 className="text-xl text-center text-white">{ rMean }</h1>
+                      </Button>
+                      <Button onClick={sMode} className="container__result">
+                        <h1 className="head__2">Мода</h1>
+                        <h1 className="text-xl text-center text-white">{rMode}</h1>
+                      </Button>
+                      <Button onClick={sMedian} className="container__result">
+                      <h1 className="head__2">Медиан</h1>
+                      <h1 className="text-xl text-center text-white">{rMedian}</h1>
+                      </Button>
+                      <Button onClick={sSkwen} className="container__result">
+                      <h1 className="head__2">Ассиметрия</h1>
+                      <h1 className="text-xl text-center text-white">{rSkwen}</h1>
+                      </Button>
+                  </>
+                  }
+                  {typeRes == 3 && 
+                  <>
+                  <h1 className="head">Дисперсия</h1>
+                    <Button onClick={sVariance} className="container__result">
+                      <h1 className="head__2">Дисперсия</h1>
+                      <h1 className="text-xl text-center text-white">{ rVariance }</h1>
+                    </Button>
+                    <Button onClick={sSVariance} className="container__result">
+                      <h1 className="head__2">Выборочная дисперсия</h1>
+                      <h1 className="text-xl text-center text-white">{rSVariance}</h1>
+                    </Button>
+                    <Button onClick={sStd} className="container__result">
+                    <h1 className="head__2">Стандартное отклонение</h1>
+                    <h1 className="text-xl text-center text-white">{rStd}</h1>
+                    </Button>
+                    <Button onClick={sMad} className="container__result">
+                    <h1 className="head__2">Абсолютное отклонение</h1>
+                    <h1 className="text-xl text-center text-white">{rMad}</h1>
+                    </Button>
+                    <Button onClick={sQuantileR} className="container__result">
+                    <h1 className="head__2">Квартиль диапозон</h1>
+                    <h1 className="text-xl text-center text-white">{rQuantileR}</h1>
+                    </Button>
+                  </>
+                  }
+                  {typeRes == 4 && 
+                  <>
+                  <h1 className="head">Сходство</h1>
+                  <Button onClick={sCorel} className="container__result">
+                      <h1 className="head__2">Кореляция</h1>
+                      <h1 className="text-xl text-center text-white">{ rCorel }</h1>
+                    </Button>
+                    <Button onClick={sCovariance} className="container__result">
+                      <h1 className="head__2">Ковариация</h1>
+                      <h1 className="text-xl text-center text-white">{rCovariance}</h1>
+                    </Button>
+                    <Button onClick={sRquad} className="container__result">
+                    <h1 className="head__2">R квадрат</h1>
+                    <h1 className="text-xl text-center text-white">{rRquad}</h1>
+                    </Button>
+                  </>
+                  }
+                  {typeRes == 5 && 
+                  <>
+                  <h1 className="head">Регрессия</h1>
+                  <Button onClick={sRegression} className="container__result">
+                    <h1 className="head__2">Регрессия</h1>
+                    <h1 className="text-xl text-center text-white">{JSON.stringify(rRegression)}</h1>
+                    </Button>
+                  </>
+                  }
+                  {typeRes == 6 && 
+                  <>
+                  <h1 className="text-xl text-center mb-[20px] text-white">Введите число разбиений</h1>
+                  <Counter className="mb-[20px] text-white" value={kmeansCol} setValue={setKmeansCol} step={1} min={1} max={10}/>
+                  <Button onClick={sKmeans} className="container__result">
+                    <h1 className="head__2">К-среднее</h1>
+                    <h1 className="text-xl text-center text-white">{rKmeans?.join(' | ')}</h1>
+                  </Button>
+                  </>
+                  }
+                  {typeRes == 7 && 
+                  <>
+                  <h1 className="text-xl text-center mb-[20px] text-white">Введите ожидаемое значение</h1>
+                  <Counter className="mb-[20px] text-white" value={expectedValue} setValue={setExpectedValue} step={0.2} min={1} max={10}/>
+                  <Button onClick={sTest} className="container__result">
+                    <h1 className="head__2">tTest</h1>
+                    <h1 className="text-xl text-center text-white">{rTest}</h1>
+                  </Button>
+                  <Button onClick={sTestTwo} className="container__result">
+                    <h1 className="head__2">tTest 2 var</h1>
+                    <h1 className="text-xl text-center text-white">{rTestTwo}</h1>
+                  </Button>
+                  </>
+                  }
+                  {typeRes == 8 && 
+                  <>
+                  <h1 className="head">Остальное</h1>
+                  <h1 className="text-xl text-center mb-[20px] text-white">Введите число разбиений</h1>
+                  <Counter className="mb-[20px]" value={combin} setValue={setCombin} step={1} min={1} max={10}/>
+                  <Button onClick={sChunk} className="container__result">
+                    <h1 className="head__2">Чанки</h1>
+                    <h1 className="text-xl text-center text-white">{rChunk?.join(' | ')}</h1>
+                  </Button>
+                  <Button onClick={sCombin} className="container__result">
+                    <h1 className="head__2">Комбинации</h1>
+                    <h1 className="text-xl text-center text-white">{rCombin?.join(' | ')}</h1>
+                  </Button>
+                  <Button onClick={sEcsces} className="container__result">
+                    <h1 className="head__2">Вставление</h1>
+                    <h1 className="text-xl text-center text-white">{rEcsces}</h1>
+                  </Button>
+                  </>
+                  }
+                </div>
+              </div>
             </div>
             </div>
           </div>

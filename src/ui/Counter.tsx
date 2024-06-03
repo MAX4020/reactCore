@@ -94,7 +94,7 @@ const Counter = ({name,iconUp,iconDown,type = "primary",direction = "row",classN
   return ( 
     <div className={classNames('flex items-center rounded-sm',className,directionCounter)}>
     <Button className={classNames("cursor-pointer flex justify-center items-center !shadow-none active:!top-0",directionCounter)} type={type} onClick={plusHandler}>{iconUp}</Button>
-    <span className="w-full flex justify-center overflow-hidden">{value}</span>
+    <span className="w-full flex justify-center items-center overflow-hidden">{value}</span>
     <input type="text" name={name} value={value} readOnly hidden/>
     <Button className={classNames("cursor-pointer flex justify-center items-center !shadow-none active:!top-0",directionCounter)} type={type} onClick={minusHandler}>{iconDown}</Button>
   </div>
